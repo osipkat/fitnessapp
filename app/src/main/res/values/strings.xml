@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FitnessApp</string>
+    <string name="loading">Загрузка</string>
+    <string name="loading_failed">Ошибка загрузки</string>
+    <string name="placeholder_result">Здесь будет результат</string>
+    <string name="workout_type_all">Все</string>
+    <string name="workout_type_training">Тренировка</string>
+    <string name="workout_type_stream">Эфир</string>
+    <string name="workout_type_complex">Комплекс</string>
+    <string name="workout_type_unknown">Неизвестно</string>
+    <string name="search">Search</string>
+</resources>
