@@ -146,11 +146,11 @@ fun WorkoutsScreen(
     navigateWorkoutToDetail: (Workout) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    if (uiState.selectedWorkout != null && uiState.isWorkoutDetailOpen) {
+    if (uiState.selectedWorkout != null && uiState.video != null && uiState.isWorkoutDetailOpen) {
         BackHandler {
             closeWorkoutDetailScreen()
         }
-        WorkoutVideoPlayer(uiState.selectedWorkout)
+        WorkoutVideoPlayer(uiState.video, uiState.selectedWorkout)
     } else {
         Column {
             WorkoutSearchBar(

@@ -14,8 +14,8 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
-import com.osipkat.fitnessapp.data.DefaultAppContainer
 import com.osipkat.fitnessapp.data.baseUrl
+import com.osipkat.fitnessapp.model.Video
 import com.osipkat.fitnessapp.model.Workout
 
 @Composable
@@ -80,11 +80,14 @@ fun VideoPlayer(
 }
 
 @Composable
-fun WorkoutVideoPlayer(workout: Workout) {
+fun WorkoutVideoPlayer(
+    video: Video,
+    workout: Workout
+) {
     Column() {
         WorkoutItem(workout, navigateToDetail = {})
         VideoPlayer(
-            url = baseUrl + "example-01.mp4"
+            url = baseUrl + video.link.drop(1)
         )
     }
 

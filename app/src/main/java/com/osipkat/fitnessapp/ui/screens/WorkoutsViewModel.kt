@@ -12,6 +12,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.osipkat.fitnessapp.FitnessApplication
 import com.osipkat.fitnessapp.R
 import com.osipkat.fitnessapp.data.WorkoutsRepository
+import com.osipkat.fitnessapp.model.Video
 import com.osipkat.fitnessapp.model.Workout
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -19,6 +20,7 @@ import java.io.IOException
 data class WorkoutsUiState (
     val workouts: List<Workout> = emptyList(),
     val selectedWorkout: Workout? = null,
+    val video: Video? = null,
     val isWorkoutDetailOpen: Boolean = false,
     val selectedFilter: WorkoutFilter = WorkoutFilter.ALL,
     val searchQuery: String = "",
@@ -71,12 +73,23 @@ class WorkoutsViewModel(private val workoutsRepository: WorkoutsRepository) : Vi
             selectedWorkout = workout,
             isWorkoutDetailOpen = true
         )
+        viewModelScope.launch {
+            try {
+                val video = workoutsRepository.getVideo(workout.id)
+                uiState = uiState.copy(
+                    video = video
+                )
+            } catch (e: IOException) {
+
+            }
+        }
     }
 
     fun closeWorkoutDetailScreen() {
         uiState = uiState.copy(
             selectedWorkout = allWorkouts.first(),
-            isWorkoutDetailOpen = false
+            isWorkoutDetailOpen = false,
+            video = null
         )
     }
 

@@ -22,7 +22,7 @@ import com.osipkat.fitnessapp.ui.screens.WorkoutsViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FitnessApp() {
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = { FitnessTopAppBar(scrollBehavior = scrollBehavior) }
