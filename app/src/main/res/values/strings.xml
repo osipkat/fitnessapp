@@ -9,4 +9,9 @@
     <string name="workout_type_complex">Комплекс</string>
     <string name="workout_type_unknown">Неизвестно</string>
     <string name="search">Search</string>
+    <plurals name="minutes">
+        <item quantity="one">%d минута</item>
+        <item quantity="few">%d минуты</item>
+        <item quantity="other">%d минут</item>
+    </plurals>
 </resources>

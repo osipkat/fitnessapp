@@ -25,6 +25,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -123,10 +124,14 @@ fun WorkoutItem(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(stringResource(workout.typeStrRes))
-                Text("? минут")
+                if (workout.duration > 0) {
+                    Text(pluralStringResource(
+                        R.plurals.minutes,
+                        workout.duration,
+                        workout.duration))
+                }
             }
-
-            Text("Какое-то описание. Описание может быть длинное. Или короткое.")
+            workout.description?.let { Text(it) }
         }
     }
 }
@@ -232,7 +237,9 @@ fun WorkoutItemPreview() {
             Workout(
                 id = 1,
                 title = "Утренняя пробежка",
-                type = 1
+                description = "Идеальная пробежка для старта дня",
+                type = 1,
+                duration = 30
             ),
             navigateToDetail = {}
         )
